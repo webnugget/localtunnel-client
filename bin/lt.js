@@ -23,6 +23,10 @@ const { argv } = yargs
     alias: 'subdomain',
     describe: 'Request this subdomain',
   })
+  .option('a', {
+    alias: 'accesskey',
+    describe: 'provide accesskey if required by tunnelserver',
+  })
   .option('l', {
     alias: 'local-host',
     describe: 'Tunnel traffic to this host instead of localhost, override Host header to this host',
@@ -72,6 +76,7 @@ if (typeof argv.port !== 'number') {
     local_cert: argv.localCert,
     local_key: argv.localKey,
     local_ca: argv.localCa,
+    accesskey: argv.accesskey,
     allow_invalid_cert: argv.allowInvalidCert,
   }).catch(err => {
     throw err;
